@@ -2,7 +2,7 @@ package com.foodapp.serviceImpl;
 
 
 import com.foodapp.model.Usuario;
-import com.foodapp.repository.IUsuarioRepo;
+import com.foodapp.repository.UsuarioRepo;
 import com.foodapp.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 public class UsuarioServiceImpl implements IUsuarioService {
 
     @Autowired
-    IUsuarioRepo repo;
+    UsuarioRepo repo;
 
 
     @Override
