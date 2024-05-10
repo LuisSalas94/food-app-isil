@@ -21,8 +21,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse login(LoginRequest request){
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails usuario = repo.findByUsername(request.getUsername()).orElseThrow();
         String token = jwtService.getToken(usuario);
         return AuthResponse.builder()
@@ -34,7 +33,7 @@ public class AuthService {
         Usuario usuario = Usuario.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .fistname(request.getFistname())
+                .firstname(request.getFistname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .rol(Rol.USER1)

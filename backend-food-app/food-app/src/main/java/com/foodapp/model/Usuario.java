@@ -25,10 +25,13 @@ public class Usuario implements UserDetails {
     Integer id;
     @Column(nullable = false)
     String username;
-    String fistname;
+    String firstname;
+
+    @Column(nullable = false)
     String lastname;
     String email;
     String password;
+    @Enumerated(EnumType.STRING)
     Rol rol;
 
 

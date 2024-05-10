@@ -2,15 +2,19 @@ package com.foodapp.controller;
 
 
 import com.foodapp.model.Usuario;
+import com.foodapp.model.UsuarioRequest;
+import com.foodapp.model.UsuarioResponse;
 import com.foodapp.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/usuarios")
+@CrossOrigin(origins = {"http://localhost:4200"})
+
 public class UsuarioController {
 
 
@@ -33,9 +37,9 @@ public class UsuarioController {
         return service.save(usuario);
     }
 
-    @PutMapping
-    public Usuario update(@RequestBody Usuario usuario) {
-        return service.save(usuario);
+    @PutMapping()
+    public ResponseEntity<UsuarioResponse>updateUsuario(@RequestBody UsuarioRequest usuarioRequest) {
+        return ResponseEntity.ok(service.updateUser(usuarioRequest));
     }
 
     @DeleteMapping("/{id}")
